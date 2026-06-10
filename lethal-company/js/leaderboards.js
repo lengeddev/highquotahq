@@ -275,10 +275,12 @@ const displayLatest = (runs) => {
     runDiv.appendChild(playersDiv);
     const versionDiv = document.createElement('div');
     versionDiv.classList.add('recent-version');
-    if (activeCollection.endsWith('_sdc') || activeCollection.endsWith('_smhq')){
-      versionDiv.textContent = `Version: ${run.version} - Moon: ${run.moon}`;
+    if (activeCollection.endsWith('_sdc')){
+      versionDiv.textContent = `${run.version} - ${run.moon} - Scrap: ${run.scrapType}`;
+    } else if (activeCollection.endsWith('_smhq')){
+      versionDiv.textContent = `${run.version} - ${run.moon}`;
     } else {
-      versionDiv.textContent = `Version: ${run.version}`;
+      versionDiv.textContent = `${run.version}`;
     }
     runDiv.appendChild(versionDiv);
 
@@ -417,7 +419,12 @@ const displayLeaderboard = (runs) => {
     metadataDiv.classList.add('run-metadata');
     const versionDiv = document.createElement('div');
     versionDiv.classList.add('run-version');
-    versionDiv.textContent = `Version: ${run.version}`;
+    if (activeCollection === "leaderboards_sdc"){
+      versionDiv.textContent = `Version: ${run.version} - Scrap Type: ${run.scrapType}`;
+    }else{
+      versionDiv.textContent = `Version: ${run.version}`;
+    }
+    
 
     metadataDiv.appendChild(versionDiv);
 
