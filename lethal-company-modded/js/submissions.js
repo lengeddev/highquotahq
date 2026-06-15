@@ -354,6 +354,16 @@ document.getElementById("runSubmissionForm").addEventListener("submit", async (e
     return;
   }
 
+  if ((runData.quotaFulfilled ?? 0) < 130){
+    console.warn('quotaFulfilled cannot be lower than 130.');
+    alert('Quota Fulfilled cannot be lower than 130. This field is for the value of the last quota that was fulfilled.');
+  }
+
+  if ((runData.quotaReached ?? 0) < 182){
+    console.warn('quotaReached cannot be lower than 182.');
+    alert('Quota Reached cannot be lower than 182. This field is for the value of the last quota reached.');
+  }
+
   // Use modular SDK syntax to add the document
   try {
     const leaderboardRef = collection(db, collectionName);

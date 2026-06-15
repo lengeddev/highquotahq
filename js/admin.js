@@ -560,7 +560,7 @@ export function showRunDetails(runId, collectionName, run, role) {
         additionalInfo = `
             <label>Quota Amount: <input type="number" value="${quotaAmount}" disabled data-field="quotaAmount"></label><br>
             <label>Quota Fulfilled: <input type="number" value="${quotaFulfilled}" disabled data-field="quotaFulfilled"></label><br>
-            <label>Quota Reached: <input type="number" value="${quotaReached}" disabled data-field="quotaReached"></label><br>
+            <label>Number of Quotas Reached: <input type="number" value="${quotaReached}" disabled data-field="quotaReached"></label><br>
             <label>Total Scrap: <input type="number" value="${totalScrap}" disabled data-field="totalScrap"></label><br>
         `;
     } else if (collectionName.endsWith('_sdc')) {
