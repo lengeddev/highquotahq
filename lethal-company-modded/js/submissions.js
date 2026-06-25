@@ -347,23 +347,25 @@ document.getElementById("runSubmissionForm").addEventListener("submit", async (e
     };
   }
 
-  if ((runData.quotaReached ?? 0) >= 100)
-  { 
-    console.warn('quotaReached cannot be higher than 99.');
-    alert('Number of Quotas Reached cannot be 100 or higher. This field is for how many quotas you reached during your run. It is the same as the number of your last quota (but not the value).');
-    return;
-  }
+  if (leaderboardType !== "sdc"){
+    if ((runData.quotaReached ?? 0) >= 100)
+    { 
+      console.warn('quotaReached cannot be higher than 99.');
+      alert('Number of Quotas Reached cannot be 100 or higher. This field is for how many quotas you reached during your run. It is the same as the number of your last quota (but not the value).');
+      return;
+    }
 
-  if ((runData.quotaFulfilled ?? 0) < 130){
-    console.warn('quotaFulfilled cannot be lower than 130.');
-    alert('Quota Fulfilled cannot be lower than 130. This field is for the value of the last quota that was fulfilled.');
-    return;
-  }
+    if ((runData.quotaFulfilled ?? 0) < 130){
+      console.warn('quotaFulfilled cannot be lower than 130.');
+      alert('Quota Fulfilled cannot be lower than 130. This field is for the value of the last quota that was fulfilled.');
+      return;
+    }
 
-  if ((runData.quotaAmount ?? 0) < 182){
-    console.warn('quotaReached cannot be lower than 182.');
-    alert('Quota Reached cannot be lower than 182. This field is for the value of the last quota reached.');
-    return;
+    if ((runData.quotaAmount ?? 0) < 182){
+      console.warn('quotaReached cannot be lower than 182.');
+      alert('Quota Reached cannot be lower than 182. This field is for the value of the last quota reached.');
+      return;
+    }
   }
 
   // Use modular SDK syntax to add the document
