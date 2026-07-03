@@ -310,12 +310,12 @@ const unbanUser = async () => {
 
 // verifier interface
 
-const LATE_THRESHOLDS = [28, 42, 56, 70];
+const LATE_THRESHOLDS = [28, 35, 42, 56];
 const THRESHOLD_COLORS = {
     28: '#dd8',
-    42: '#d86',
-    56: '#d53',
-    70: '#d22'
+    35: '#d86',
+    42: '#d53',
+    56: '#d22'
 }
 const MS_PER_DAY = 1000 * 60 * 60 * 24;
 
@@ -560,7 +560,7 @@ export function showRunDetails(runId, collectionName, run, role) {
         additionalInfo = `
             <label>Quota Amount: <input type="number" value="${quotaAmount}" disabled data-field="quotaAmount"></label><br>
             <label>Quota Fulfilled: <input type="number" value="${quotaFulfilled}" disabled data-field="quotaFulfilled"></label><br>
-            <label>Quota Reached: <input type="number" value="${quotaReached}" disabled data-field="quotaReached"></label><br>
+            <label>Number of Quotas Reached: <input type="number" value="${quotaReached}" disabled data-field="quotaReached"></label><br>
             <label>Total Scrap: <input type="number" value="${totalScrap}" disabled data-field="totalScrap"></label><br>
         `;
     } else if (collectionName.endsWith('_sdc')) {
@@ -815,6 +815,10 @@ async function verifyRun(runId, collectionName, role) {
 
     if (newRun.hasOwnProperty("moon")) {
         queryConstraints.push(where("moon", "==", newRun.moon));
+    }
+
+    if (newRun.hasOwnProperty("scrapType")){
+        queryConstraints.push(where("scrapType", "==", newRun.scrapType));
     }
 
     const obsoleteRunsQuery = query(collection(db, collectionName), ...queryConstraints);
