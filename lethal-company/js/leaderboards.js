@@ -175,7 +175,7 @@ filterBtns.forEach((btn) => {
     const filterValue = btn.getAttribute('data-filter');
 
     if (filterType === 'playerCount') {
-      activeFilters.playerCount = [filterValue];
+      activeFilters.playerCount = filterValue === 'any' ? [] : [filterValue];
 
       filterCategory.querySelectorAll('.filter-btn').forEach(button => button.classList.remove('active'));
       btn.classList.add('active');
