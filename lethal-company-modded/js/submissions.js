@@ -44,7 +44,7 @@ const gameData = {
     "36-Gloom",
     "147-Gratar",
     "58-Hyve",
-    "42-Hyx",
+    "-42-Hyx",
     "46-Infernis",
     "84-Junic",
     "35-Lecaro",
