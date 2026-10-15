@@ -53,7 +53,7 @@
 }
   
 /* team members */
-#admins ul, #verifiers ul, #modded-verifiers ul, #site-developers ul {
+#admins ul, #moderators ul, #verifiers ul, #modded-verifiers ul, #site-developers ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -62,7 +62,7 @@
   list-style: none;
 }
 
-#admins ul li a, #verifiers ul li a, #modded-verifiers ul li a, #site-developers ul li a {
+#admins ul li a, #moderators ul li a, #verifiers ul li a, #modded-verifiers ul li a, #site-developers ul li a {
   color: #ff2222;
   font-size: 1.2rem;
   text-decoration: none;
@@ -71,7 +71,7 @@
   padding: 10px 10px;
 }
 
-#admins ul li a:hover, #verifiers ul li a:hover, #modded-verifiers ul li a:hover, #site-developers ul li a:hover {
+#admins ul li a:hover, #moderators ul li a:hover, #verifiers ul li a:hover, #modded-verifiers ul li a:hover, #site-developers ul li a:hover {
   text-decoration: underline;
 }
 
@@ -123,16 +123,16 @@
     font-size: 1.3rem;
   }
 
-  #admins ul li, #verifiers ul li, #modded-verifiers ul li, #site-developers ul li {
+  #admins ul li, #moderators ul li, #verifiers ul li, #modded-verifiers ul li, #site-developers ul li {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  #admins ul li img, #verifiers ul li img, #modded-verifiers ul li img, #site-developers ul li img {
+  #admins ul li img, #moderators ul li img, #verifiers ul li img, #modded-verifiers ul li img, #site-developers ul li img {
     margin-bottom: 10px;
   }
 
-  #admins ul li a, #verifiers ul li a, #modded-verifiers ul li a, #site-developers ul li a {
+  #admins ul li a, #moderators ul li a, #verifiers ul li a, #modded-verifiers ul li a, #site-developers ul li a {
     font-size: 1rem;
   }
 

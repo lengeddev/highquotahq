@@ -15,6 +15,7 @@ const fetchTeamMembers = async () => {
     const usersSnapshot = await getDocs(usersQuery);
 
     const admins = [];
+    const moderators = [];
     const verifiers = [];
     const moddedVerifiers = [];
     const siteDevelopers = [];
@@ -25,20 +26,21 @@ const fetchTeamMembers = async () => {
 
       if (Array.isArray(roles)) {
         if (roles.includes('admin')) admins.push({ username, profilePicture });
+        if (roles.includes('moderator')) moderators.push({ username, profilePicture });
         if (roles.includes('verifier')) verifiers.push({ username, profilePicture });
         if (roles.includes('modded-verifier')) moddedVerifiers.push({ username, profilePicture });
         if (roles.includes('site-developer')) siteDevelopers.push({ username, profilePicture });
       }
     });
 
-    displayTeamMembers(admins, verifiers, moddedVerifiers, siteDevelopers);
+    displayTeamMembers(admins, moderators, verifiers, moddedVerifiers, siteDevelopers);
 
   } catch (error) {
     console.error("Error fetching team members:", error);
   }
 };
 
-const displayTeamMembers = (admins, verifiers, moddedVerifiers, siteDevelopers) => {
+const displayTeamMembers = (admins, moderators, verifiers, moddedVerifiers, siteDevelopers) => {
   const createProfileLink = (username, profilePicURL) => {
     const link = document.createElement('a');
     link.href = `/pages/profile.html?username=${username}`;
@@ -66,10 +68,26 @@ const displayTeamMembers = (admins, verifiers, moddedVerifiers, siteDevelopers) 
     adminList.appendChild(listItem);
   });
 
+  const moderatorList = document.getElementById('moderator-list');
+  moderators.forEach(moderator => {
+    const exists = admins.some(admin => admin.username === moderator.username)
+    if (exists){
+      return;
+    }
+    const listItem = document.createElement('li');
+    const profileLink = createProfileLink(moderator.username, moderator.profilePicture);
+    listItem.appendChild(profileLink);
+    moderatorList.appendChild(listItem);
+  })
+
   const verifierList = document.getElementById('verifier-list');
   verifiers.forEach(verifier => {
     const exists = admins.some(admin => admin.username === verifier.username)
     if (exists){
+      return;
+    }
+    const existsMod = moderators.some(moderator => moderator.username === verifier.username)
+    if (existsMod){
       return;
     }
     const listItem = document.createElement('li');
@@ -82,6 +100,10 @@ const displayTeamMembers = (admins, verifiers, moddedVerifiers, siteDevelopers) 
   moddedVerifiers.forEach(moddedVerifier => {
     const exists = admins.some(admin => admin.username === moddedVerifier.username)
     if (exists){
+      return;
+    }
+    const existsMod = moderators.some(moderator => moderator.username === moddedVerifier.username)
+    if (existsMod){
       return;
     }
     const listItem = document.createElement('li');
