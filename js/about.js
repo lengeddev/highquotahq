@@ -10,7 +10,7 @@ const backupProfilePic = "/assets/default-avatar.png";
 
 const fetchTeamMembers = async () => {
   try {
-    const rolesToFetch = ['admin', 'verifier', 'modded-verifier', 'site-developer'];
+    const rolesToFetch = ['admin', 'moderator', 'verifier', 'modded-verifier', 'site-developer'];
     const usersQuery = query(collection(db, 'users'), where('roles', 'array-contains-any', rolesToFetch));
     const usersSnapshot = await getDocs(usersQuery);
 
