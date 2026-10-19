@@ -26,6 +26,9 @@ const gameData = {
     "44-Atlantica",
     "288-Berunah",
     "235-Calist",
+    "934-Carnate",
+    "141-2-Centrus",
+    "397-Chasm",
     "842-Core",
     "42-Cosmocos",
     "328-Crowd",
@@ -33,7 +36,9 @@ const gameData = {
     "354-Demetrica",
     "724-Descent",
     "48-Desolation",
+    "363-Dormant",
     "164-Dreck",
+    "426-Dune",
     "135-Duckstroid-14",
     "555-Empra",
     "154-Etern",
@@ -41,8 +46,11 @@ const gameData = {
     "29-Faith",
     "141-Filitrios",
     "25-Fission-C",
+    "94-2-Glace",
+    "42-2-Glimmer",
     "36-Gloom",
     "147-Gratar",
+    "455-Heap",
     "58-Hyve",
     "-42-Hyx",
     "46-Infernis",
@@ -54,10 +62,15 @@ const gameData = {
     "94-Polarus",
     "214-Release",
     "648-Repress",
+    "Researcher-6-x1753B",
     "398-Roart",
+    "452-Selector",
+    "733-Spine",
     "4-Thalasso",
     "132-Trite",
-    "67-Utril"
+    "67-Utril",
+    "67-2-Vindict",
+    "994-Xenphir"
   ],
   classic_moons: [
     "320-Blurance",
@@ -69,14 +82,13 @@ const gameData = {
     "143-Scallg",
     "86-Synthesis",
     "13-Kast",
-    "154-Etern",
     "43-Orion",
     "2742-Jabiua"
   ],
   // versions
   brutal_versions: ["v81", "v73", "v72", "v69", "v64", "v62", "v56", "v50", "v49"],
   eclipsed_versions: ["v81", "v73", "v72", "v69", "v64", "v62", "v56", "v50", "v49", "v45", "v40"],
-  wesleys_versions: ["v73", "v72", "v69"],
+  wesleys_versions: ["v81", "v73", "v72", "v69"],
   classic_versions: ["v81", "v73", "v72", "v69", "v64", "v62", "v56"]
 }
 
@@ -86,7 +98,7 @@ const addPlayerBtn = document.getElementById('addPlayerBtn');
 let totalPlayerBlocks = 0;
 let loggedPlayerName = '';
 const MAX_PLAYERS = 4;
-const MAX_VIDEOS_PER_PLAYER = 9;
+const MAX_VIDEOS_PER_PLAYER = 10;
 
 function createPlayerBlock(defaultUsername = "", isPrimary = false){
   if (!isPrimary && totalPlayerBlocks >= MAX_PLAYERS){
@@ -150,7 +162,7 @@ function createPlayerBlock(defaultUsername = "", isPrimary = false){
   addVideoBtn.addEventListener('click', () => {
     const currentVideoCount = videoListContainer.querySelectorAll('.video-url-input').length;
 
-    if (currentVideoCount >= 10) {
+    if (currentVideoCount >= MAX_VIDEOS_PER_PLAYER) {
       alert("You're limited to 10 videos per player.");
       return;
     }
