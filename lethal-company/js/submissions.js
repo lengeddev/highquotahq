@@ -10,7 +10,7 @@ const addPlayerBtn = document.getElementById('addPlayerBtn');
 let totalPlayerBlocks = 0;
 let loggedPlayerName = '';
 const MAX_PLAYERS = 4;
-const MAX_VIDEOS_PER_PLAYER = 9;
+const MAX_VIDEOS_PER_PLAYER = 10;
 
 function createPlayerBlock(defaultUsername = "", isPrimary = false){
   if (!isPrimary && totalPlayerBlocks >= MAX_PLAYERS){
@@ -74,7 +74,7 @@ function createPlayerBlock(defaultUsername = "", isPrimary = false){
   addVideoBtn.addEventListener('click', () => {
     const currentVideoCount = videoListContainer.querySelectorAll('.video-url-input').length;
 
-    if (currentVideoCount >= 10) {
+    if (currentVideoCount >= MAX_VIDEOS_PER_PLAYER) {
       alert("You're limited to 10 videos per player.");
       return;
     }
